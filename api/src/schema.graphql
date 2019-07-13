@@ -1,0 +1,6 @@
+type Currency {
+    id: ID!
+    iso: String
+    description: String
+    exchange: Float
+}

@@ -1,0 +1,46 @@
+{
+  "name": "grand-stack-starter-api",
+  "version": "0.0.1",
+  "description": "API app for GRANDstack",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/nodemon --exec babel-node src/index.js",
+    "seedDb": "./node_modules/.bin/babel-node src/seed/seed-db.js",
+    "ncu:update": "ncu --packageFile package.json",
+    "ncu:upgrade": "ncu --packageFile package.json -u"
+  },
+  "author": "William Lyon",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-boost": "0.4.3",
+    "apollo-cache-inmemory": "1.6.2",
+    "apollo-client": "2.6.3",
+    "apollo-link-http": "1.5.15",
+    "apollo-server": "2.6.9",
+    "dotenv": "8.0.0",
+    "graphql-tag": "2.10.1",
+    "neo4j-driver": "1.7.5",
+    "neo4j-graphql-js": "2.6.3",
+    "node-fetch": "2.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "husky": "3.0.0",
+    "lint-staged": "9.2.0",
+    "nodemon": "1.19.1",
+    "npm-check-updates": "3.1.18"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md,graphql": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

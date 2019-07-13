@@ -1,0 +1,50 @@
+{
+  "name": "grand-stack-starter-ui",
+  "version": "0.0.1",
+  "description": "UI app for GRANDstack",
+  "dependencies": {
+    "semantic-ui-css": "2.4.1",
+    "semantic-ui-react": "0.87.3",
+    "apollo-boost": "0.4.3",
+    "graphql": "14.4.2",
+    "graphql-tag": "2.10.1",
+    "prettier": "1.18.2",
+    "react": "16.8.6",
+    "react-apollo": "2.5.8",
+    "react-dom": "16.8.6",
+    "react-scripts": "3.0.1",
+    "react-router-dom": "5.0.1",
+    "serve": "11.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "now-start": "serve build/",
+    "ncu:update": "ncu --packageFile package.json",
+    "ncu:upgrade": "ncu --packageFile package.json -u"
+  },
+  "devDependencies": {
+    "husky": "3.0.0",
+    "lint-staged": "9.2.0",
+    "npm-check-updates": "3.1.18"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md,graphql}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
