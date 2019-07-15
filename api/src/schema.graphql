@@ -4,3 +4,10 @@ type Currency {
     description: String
     exchange: Float
 }
+
+type Client {
+    id: ID!
+    firstName: String
+    lastName: String
+    currency: Currency @relation(name: "BASED", direction: "BOTH")
+}
