@@ -1,9 +1,13 @@
 import React from 'react';
 import CurrencyList from "./currency-list";
+import CurrencyCombobox from "./currency-combobox";
 
 function Currency() {
     return (
-        <CurrencyList/>
+        <div>
+            <CurrencyCombobox/>
+            <CurrencyList/>
+        </div>
     );
 }
 

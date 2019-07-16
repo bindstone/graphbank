@@ -15,6 +15,10 @@ const AppMenu = () => (
                     Currency
                 </Menu.Item>
 
+                <Menu.Item as={Link} to="/client">
+                    Client
+                </Menu.Item>
+
             </Container>
         </Menu>
     </div>

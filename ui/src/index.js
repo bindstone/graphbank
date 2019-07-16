@@ -2,7 +2,7 @@ import "semantic-ui-css/semantic.min.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/app";
+import App from "./components/app/app";
 import registerServiceWorker from "./registerServiceWorker";
 import ApolloClient from "apollo-boost";
 import {ApolloProvider} from "react-apollo";

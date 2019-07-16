@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Info() {
+function AppInfo() {
     return (
         <div>
             Info
@@ -8,4 +8,4 @@ function Info() {
     );
 }
 
-export default Info;
+export default AppInfo;

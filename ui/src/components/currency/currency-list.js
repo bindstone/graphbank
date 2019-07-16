@@ -1,6 +1,6 @@
 import React from "react";
 import {Query} from "react-apollo";
-import {getCurrencies} from "../queries/currency-query";
+import {getCurrencies} from "../../queries/currency-query";
 
 class CurrencyList extends React.Component {
 
