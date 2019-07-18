@@ -1,8 +1,10 @@
 import React from "react";
 import {Query} from "react-apollo";
 import {getClients} from "../../queries/client-query";
+import {withRouter} from 'react-router-dom'
 
 class ClientList extends React.Component {
+
 
     render() {
         return (
@@ -18,12 +20,22 @@ class ClientList extends React.Component {
         );
     }
 
+    add = () => {
+        console.log("ADD");
+        console.log(this.props);
+        this.props.history.push('/client/add');
+    };
+
+    modify = (id) => {
+        console.log("MODIFY : " + id);
+    };
+
     renderTable = (data) => {
         return (
             <table className="ui celled padded table">
                 <thead>
                 <tr>
-                    <th colSpan="3" width="100%">
+                    <th colSpan="4" width="100%">
                         <div className="ui center aligned">
                             Clients
                         </div>
@@ -33,6 +45,9 @@ class ClientList extends React.Component {
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Currency</th>
+                    <th>
+                        <button onClick={this.add}>Add</button>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,10 +64,13 @@ class ClientList extends React.Component {
                     <td>{client.firstName}</td>
                     <td>{client.lastName}</td>
                     <td>{client.currency.iso}</td>
+                    <td>
+                        <button onClick={(e) => this.modify(client.id, e)}>Modify</button>
+                    </td>
                 </tr>
             );
         });
     };
 }
 
-export default ClientList;
+export default withRouter(ClientList);
