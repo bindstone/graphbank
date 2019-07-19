@@ -6,7 +6,7 @@ class CurrencyCombobox extends React.Component {
 
     render() {
         return (
-            <select className="ui dropdown">
+            <select className="ui dropdown" onChange={this.props.onChange}>
                 <Query query={getCurrencies}>
                     {({loading, error, data}) => {
                         if (loading) return <option>Loading...</option>;
@@ -22,12 +22,13 @@ class CurrencyCombobox extends React.Component {
 
     renderItems = (currencies) => {
         const items = currencies.map((ccy) =>
-            <option key={ccy.id} value={ccy.iso}>
+            <option key={ccy.id} value={ccy.id}>
                 {ccy.iso}
             </option>
         );
         return (
             <Fragment>
+                <option value={null}>---</option>
                 {items}
             </Fragment>
         );

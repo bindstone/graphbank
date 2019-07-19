@@ -5,7 +5,7 @@ import history from "../../history";
 import AppInfo from "./app-info";
 import Currency from "../currency/currency";
 import Client from "../client/client";
-import ClientAdd from "../client/client-add";
+import ClientNew from "../client/client-new";
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
                     <Route path="/" exact component={AppInfo}/>
                     <Route path="/currency" exact component={Currency}/>
                     <Route path="/client" exact component={Client}/>
-                    <Route path="/client/Add" exact component={ClientAdd}/>
+                    <Route path="/client/new" exact component={ClientNew}/>
                 </div>
             </div>
         </Router>

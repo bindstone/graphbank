@@ -23,7 +23,7 @@ class ClientList extends React.Component {
     add = () => {
         console.log("ADD");
         console.log(this.props);
-        this.props.history.push('/client/add');
+        this.props.history.push('/client/new');
     };
 
     modify = (id) => {
@@ -46,7 +46,7 @@ class ClientList extends React.Component {
                     <th>Last Name</th>
                     <th>Currency</th>
                     <th>
-                        <button onClick={this.add}>Add</button>
+                        <button className="ui button" onClick={this.add}>Add</button>
                     </th>
                 </tr>
                 </thead>
@@ -65,7 +65,7 @@ class ClientList extends React.Component {
                     <td>{client.lastName}</td>
                     <td>{client.currency.iso}</td>
                     <td>
-                        <button onClick={(e) => this.modify(client.id, e)}>Modify</button>
+                        <button className="ui button" onClick={(e) => this.modify(client.id, e)}>Modify</button>
                     </td>
                 </tr>
             );
