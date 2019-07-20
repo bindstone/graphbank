@@ -6,6 +6,7 @@ import AppInfo from "./app-info";
 import Currency from "../currency/currency";
 import Client from "../client/client";
 import ClientNew from "../client/client-new";
+import ClientModify from "../client/client-modify";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/currency" exact component={Currency}/>
                     <Route path="/client" exact component={Client}/>
                     <Route path="/client/new" exact component={ClientNew}/>
+                    <Route path="/client/modify/:id" exact component={ClientModify}/>
                 </div>
             </div>
         </Router>

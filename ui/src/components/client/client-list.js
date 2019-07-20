@@ -1,6 +1,6 @@
 import React from "react";
-import {Query} from "react-apollo";
-import {getClients} from "../../queries/client-query";
+import {graphql, Query} from "react-apollo";
+import {deleteClient, getClients} from "../../queries/client-query";
 import {withRouter} from 'react-router-dom'
 
 class ClientList extends React.Component {
@@ -28,6 +28,20 @@ class ClientList extends React.Component {
 
     modify = (id) => {
         console.log("MODIFY : " + id);
+        this.props.history.push(`/client/modify/${id}`);
+    };
+
+    delete = (id) => {
+        console.log("DELETE : " + id);
+
+        this.props.mutate({
+            variables: {
+                id: id
+            }
+        }).then(e => {
+            console.log(e);
+            console.log(this.props.data);
+        }).catch(e => console.log(e));
     };
 
     renderTable = (data) => {
@@ -63,8 +77,9 @@ class ClientList extends React.Component {
                 <tr key={client.id}>
                     <td>{client.firstName}</td>
                     <td>{client.lastName}</td>
-                    <td>{client.currency.iso}</td>
+                    <td>{client.currency == null ? '' : client.currency.iso}</td>
                     <td>
+                        <button className="ui button" onClick={(e) => this.delete(client.id, e)}>delete</button>
                         <button className="ui button" onClick={(e) => this.modify(client.id, e)}>Modify</button>
                     </td>
                 </tr>
@@ -73,4 +88,4 @@ class ClientList extends React.Component {
     };
 }
 
-export default withRouter(ClientList);
+export default graphql(deleteClient)(withRouter(ClientList));
