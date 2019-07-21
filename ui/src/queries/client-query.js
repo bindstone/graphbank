@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const getClients = gql`
-    query{
+    query GetClients {
         Client{
             id
             firstName

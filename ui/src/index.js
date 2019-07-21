@@ -8,7 +8,8 @@ import ApolloClient from "apollo-boost";
 import {ApolloProvider} from "react-apollo";
 
 const client = new ApolloClient({
-    uri: process.env.REACT_APP_GRAPHQL_URI
+    uri: process.env.REACT_APP_GRAPHQL_URI,
+    dataIdFromObject: o => o.id
 });
 
 const Main = () => (

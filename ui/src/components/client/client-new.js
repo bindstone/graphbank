@@ -1,5 +1,5 @@
 import React from 'react';
-import {addClient, addClientCurrency, getClients} from "../../queries/client-query";
+import {addClient} from "../../queries/client-query";
 import {graphql} from "react-apollo";
 import CurrencyCombobox from "../currency/currency-combobox";
 import {withRouter} from 'react-router-dom'
@@ -23,7 +23,7 @@ class ClientNew extends React.Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName
             },
-            refetchQueries: [{getClients}]
+            refetchQueries: ['GetClients']
         }).then(e => {
             console.log(e);
             this.props.history.push('/client');
@@ -66,6 +66,4 @@ class ClientNew extends React.Component {
     }
 }
 
-export default graphql(addClientCurrency)(
-    graphql(addClient)(withRouter(ClientNew))
-);
+export default (graphql(addClient)(withRouter(ClientNew)));

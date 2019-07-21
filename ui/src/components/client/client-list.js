@@ -37,7 +37,8 @@ class ClientList extends React.Component {
         this.props.mutate({
             variables: {
                 id: id
-            }
+            },
+            refetchQueries: () => ['GetClients']
         }).then(e => {
             console.log(e);
             console.log(this.props.data);
