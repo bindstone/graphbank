@@ -2,6 +2,15 @@ version: '3'
 
 services:
 
+  keycloak:
+    build: ./keycloak
+    ports:
+      - 8099:8080
+      - 9099:9090
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+
   neo4j:
     build: ./neo4j
     ports:
