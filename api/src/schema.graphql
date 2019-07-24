@@ -17,3 +17,20 @@ type Client {
     lastName: String
     currency: Currency @relation(name: "BASED", direction: "BOTH")
 }
+
+input ClientInput {
+    firstName: String!
+    lastName: String!
+}
+
+# mutation{
+#     createUserWithCurrency(client: {firstName:"r" lastName:"e"}
+#         currencyId:"CUR_1"){id}
+# }
+
+type Mutation {
+    createUserWithCurrency(client: ClientInput, currencyId: ID): [Client]
+    @cypher(statement:"""match(cy:Currency{id:$currencyId})
+    create(cl:Client {id: apoc.create.uuid(), firstName:$client.firstName, lastName:client.lastName})
+    merge (cl) -[:BASED]-> (cy) return cl""")
+}
