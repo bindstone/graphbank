@@ -13,7 +13,7 @@ function App() {
         <Router history={history}>
             <div>
                 <AppMenu/>
-                <div className="ui container" style={{marginTop: "80px"}}>
+                <div className="mt-2">
                     <Route path="/" exact component={AppInfo}/>
                     <Route path="/currency" exact component={Currency}/>
                     <Route path="/client" exact component={Client}/>

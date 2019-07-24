@@ -1,6 +1,7 @@
 import React from "react";
 import {Query} from "react-apollo";
 import {getCurrencies} from "../../queries/currency-query";
+import {Table} from "react-bootstrap";
 
 class CurrencyList extends React.Component {
 
@@ -20,7 +21,7 @@ class CurrencyList extends React.Component {
 
     renderTable = (data) => {
         return (
-            <table className="ui celled padded table">
+            <Table striped bordered hover>
                 <thead>
                 <tr>
                     <th colSpan="2" width="100%">
@@ -37,7 +38,7 @@ class CurrencyList extends React.Component {
                 <tbody>
                 {this.renderRows(data.Currency)}
                 </tbody>
-            </table>
+            </Table>
         )
     };
 

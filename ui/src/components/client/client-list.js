@@ -1,4 +1,5 @@
 import React from "react";
+import {Table} from "react-bootstrap";
 import {graphql, Query} from "react-apollo";
 import {deleteClient, getClients} from "../../queries/client-query";
 import {withRouter} from 'react-router-dom'
@@ -47,7 +48,7 @@ class ClientList extends React.Component {
 
     renderTable = (data) => {
         return (
-            <table className="ui celled padded table">
+            <Table striped bordered hover>
                 <thead>
                 <tr>
                     <th colSpan="4" width="100%">
@@ -61,14 +62,14 @@ class ClientList extends React.Component {
                     <th>Last Name</th>
                     <th>Currency</th>
                     <th>
-                        <button className="ui button" onClick={this.add}>Add</button>
+                        <button type="button" className="btn btn-light" onClick={this.add}>Add</button>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
                 {this.renderRows(data.Client)}
                 </tbody>
-            </table>
+            </Table>
         )
     };
 
@@ -80,8 +81,12 @@ class ClientList extends React.Component {
                     <td>{client.lastName}</td>
                     <td>{client.currency == null ? '' : client.currency.iso}</td>
                     <td>
-                        <button className="ui button" onClick={(e) => this.delete(client.id, e)}>delete</button>
-                        <button className="ui button" onClick={(e) => this.modify(client.id, e)}>Modify</button>
+                        <button type="button" className="btn btn-light mr-2"
+                                onClick={(e) => this.delete(client.id, e)}>delete
+                        </button>
+                        <button type="button" className="btn btn-light"
+                                onClick={(e) => this.modify(client.id, e)}>Modify
+                        </button>
                     </td>
                 </tr>
             );

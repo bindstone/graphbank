@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "description": "UI app for GRANDstack",
   "dependencies": {
-    "semantic-ui-css": "2.4.1",
-    "semantic-ui-react": "0.87.3",
     "apollo-boost": "0.4.3",
+    "bootstrap": "4.3.1",
     "graphql": "14.4.2",
     "graphql-tag": "2.10.1",
     "prettier": "1.18.2",
     "react": "16.8.6",
     "react-apollo": "2.5.8",
+    "react-bootstrap": "1.0.0-beta.9",
     "react-dom": "16.8.6",
-    "react-scripts": "3.0.1",
     "react-router-dom": "5.0.1",
+    "react-scripts": "3.0.1",
     "serve": "11.1.0"
   },
   "scripts": {
@@ -26,7 +26,7 @@
     "ncu:upgrade": "ncu --packageFile package.json -u"
   },
   "devDependencies": {
-    "husky": "3.0.0",
+    "husky": "3.0.1",
     "lint-staged": "9.2.0",
     "npm-check-updates": "3.1.20"
   },

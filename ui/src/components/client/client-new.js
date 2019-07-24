@@ -3,6 +3,8 @@ import {addClient} from "../../queries/client-query";
 import {graphql} from "react-apollo";
 import CurrencyCombobox from "../currency/currency-combobox";
 import {withRouter} from 'react-router-dom'
+import {Button} from "react-bootstrap"
+import Form from "react-bootstrap/Form";
 
 class ClientNew extends React.Component {
 
@@ -32,36 +34,31 @@ class ClientNew extends React.Component {
 
     render() {
         return (
-            <div className="ui form">
-                <form onSubmit={e => this.save(e)}>
+            <Form onSubmit={e => this.save(e)}>
 
-                    <div className="field">
-                        <label>First Name</label>
-                        <input placeholder="First Name" type="text"
-                               onChange={e => this.setState({firstName: e.target.value})}
-                               value={this.state.firstName}
-                        />
-                    </div>
+                <Form.Group>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control placeholder="First Name" type="text"
+                                  onChange={e => this.setState({firstName: e.target.value})}
+                                  value={this.state.firstName}
+                    />
+                </Form.Group>
 
-                    <div className="field">
-                        <label>Last Name</label>
-                        <input placeholder="Last Name" type="text"
-                               onChange={e => this.setState({lastName: e.target.value})}
-                               value={this.state.lastName}
-                        />
-                    </div>
+                <Form.Group>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control placeholder="Last Name" type="text"
+                                  onChange={e => this.setState({lastName: e.target.value})}
+                                  value={this.state.lastName}
+                    />
+                </Form.Group>
 
-                    <div className="field">
-                        <label>Currency</label>
-                        <CurrencyCombobox
-                            onChange={e => this.setState({currencyId: e.target.value})}
-                            value={this.state.currencyId}
-                        />
-                    </div>
+                <Form.Group>
+                    <Form.Label>Currency</Form.Label>
+                    <CurrencyCombobox className="form-control"/>
+                </Form.Group>
 
-                    <button className="ui submit button" type="submit">Save</button>
-                </form>
-            </div>
+                <Button variant="primary" type="submit">Save</Button>
+            </Form>
         )
     }
 }
