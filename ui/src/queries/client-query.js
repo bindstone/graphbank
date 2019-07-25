@@ -47,10 +47,9 @@ export const deleteClient = gql`
 `;
 
 export const addClientCurrency = gql`
-    mutation AddClientCurrency($cliendId: String! $currencyId: String!) {
-        AddClientCurrency(
-            from: { id: $clientId },
-            to: { id: $currencyId } )
-        { to { id } }
+    mutation AddClientCurrency($firstName: String! $lastName: String! $currencyId: ID!) {
+        createUserWithCurrency(client: {firstName:$firstName lastName:$lastName}
+            currencyId:$currencyId){id}
+
     }
 `;

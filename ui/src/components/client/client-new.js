@@ -1,5 +1,5 @@
 import React from 'react';
-import {addClient} from "../../queries/client-query";
+import {addClientCurrency} from "../../queries/client-query";
 import {graphql} from "react-apollo";
 import CurrencyCombobox from "../currency/currency-combobox";
 import {withRouter} from 'react-router-dom'
@@ -19,11 +19,19 @@ class ClientNew extends React.Component {
 
     save = (e) => {
         e.preventDefault();
+        console.log(
+            {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                currencyId: this.state.currencyId
+            }
+        );
 
         this.props.mutate({
             variables: {
                 firstName: this.state.firstName,
-                lastName: this.state.lastName
+                lastName: this.state.lastName,
+                currencyId: this.state.currencyId
             },
             refetchQueries: ['GetClients']
         }).then(e => {
@@ -54,7 +62,10 @@ class ClientNew extends React.Component {
 
                 <Form.Group>
                     <Form.Label>Currency</Form.Label>
-                    <CurrencyCombobox className="form-control"/>
+                    <CurrencyCombobox className="form-control"
+                                      onChange={e => this.setState({currencyId: e.target.value})}
+                                      value={this.state.currencyId}
+                    />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">Save</Button>
@@ -63,4 +74,4 @@ class ClientNew extends React.Component {
     }
 }
 
-export default (graphql(addClient)(withRouter(ClientNew)));
+export default (graphql(addClientCurrency)(withRouter(ClientNew)));
