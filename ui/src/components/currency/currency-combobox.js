@@ -4,6 +4,15 @@ import {getCurrencies} from "../../queries/currency-query";
 
 class CurrencyCombobox extends React.Component {
 
+    constructor(props) {
+        super(props);
+        console.log(props);
+    };
+
+    componentDidUpdate(prevProps) {
+        console.log(this.props);
+    }
+
     render() {
         return (
             <select className="ui dropdown" onChange={this.props.onChange}>
@@ -21,10 +30,17 @@ class CurrencyCombobox extends React.Component {
     }
 
     renderItems = (currencies) => {
-        const items = currencies.map((ccy) =>
-            <option key={ccy.id} value={ccy.id}>
-                {ccy.iso}
-            </option>
+        const items = currencies.map((ccy) => {
+                if (ccy.id === this.props.value) {
+                    return <option selected key={ccy.id} value={ccy.id}>
+                        {ccy.iso}
+                    </option>
+                } else {
+                    return <option key={ccy.id} value={ccy.id}>
+                        {ccy.iso}
+                    </option>
+                }
+            }
         );
         return (
             <Fragment>

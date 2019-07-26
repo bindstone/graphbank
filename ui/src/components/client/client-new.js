@@ -19,13 +19,6 @@ class ClientNew extends React.Component {
 
     save = (e) => {
         e.preventDefault();
-        console.log(
-            {
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                currencyId: this.state.currencyId
-            }
-        );
 
         this.props.mutate({
             variables: {
@@ -35,7 +28,6 @@ class ClientNew extends React.Component {
             },
             refetchQueries: ['GetClients']
         }).then(e => {
-            console.log(e);
             this.props.history.push('/client');
         }).catch(e => console.log(e));
     };

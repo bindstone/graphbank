@@ -1,3 +1,7 @@
+########################################################################################
+# TYPES
+########################################################################################
+
 type File {
     filename: String!
     mimetype: String!
@@ -18,19 +22,42 @@ type Client {
     currency: Currency @relation(name: "BASED", direction: "BOTH")
 }
 
+########################################################################################
+# INPUT
+########################################################################################
+
 input ClientInput {
+    id: ID
     firstName: String!
     lastName: String!
 }
 
-# mutation{
-#     createUserWithCurrency(client: {firstName:"r" lastName:"e"}
-#         currencyId:"CUR_1"){id}
-# }
+########################################################################################
+# QUERIES
+########################################################################################
+
+
+########################################################################################
+# MUTATIONS
+########################################################################################
 
 type Mutation {
-    createUserWithCurrency(client: ClientInput, currencyId: ID): [Client]
-    @cypher(statement:"""match(cy:Currency{id:$currencyId})
-    create(cl:Client {id: apoc.create.uuid(), firstName:$client.firstName, lastName:client.lastName})
-    merge (cl) -[:BASED]-> (cy) return cl""")
+
+    updateUserWithCurrency(client: ClientInput, currencyId: ID!): [Client]
+    @cypher(statement:"""
+    match (cc:Client{id:$client.id})-[r:BASED]-() delete r
+    with cc
+    match (cy:Currency{id:$currencyId})
+    merge (cl:Client {id:$client.id}) set cl += {firstName:$client.firstName, lastName:$client.lastName}
+    merge (cl) -[:BASED]-> (cy) return cl
+    """),
+
+    createUserWithCurrency(client: ClientInput, currencyId: ID!): [Client]
+    @cypher(statement:"""
+    match (cy:Currency{id:$currencyId})
+    create (cl:Client {id:apoc.create.uuid(), firstName:$client.firstName, lastName:client.lastName})
+    merge (cl) -[:BASED]-> (cy) return cl
+    """)
+
 }
+
