@@ -58,6 +58,6 @@ export const updateUserWithCurrency = gql`
     mutation UpdateClientCurrency($firstName: String! $lastName: String! $clientId: ID!, $currencyId: ID!) {
         updateUserWithCurrency(
             client:{firstName:$firstName lastName:$lastName, id:$clientId},
-            currencyId:$currencyId){id}
+            currencyId:$currencyId){id, firstName, lastName}
     }
 `;
