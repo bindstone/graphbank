@@ -2,11 +2,20 @@ version: '3'
 
 services:
 
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+
   keycloak:
     build: ./keycloak
     ports:
-      - 8099:8080
-      - 9099:9090
+      - 8080:8099
+      - 9990:9990
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin

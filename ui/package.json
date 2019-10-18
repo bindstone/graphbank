@@ -3,19 +3,21 @@
   "version": "0.0.1",
   "description": "UI app for GRANDstack",
   "dependencies": {
-    "apollo-boost": "0.4.3",
-    "bootstrap": "4.3.1",
-    "graphql": "14.4.2",
+    "apollo-boost": "0.4.4",
+    "graphql": "14.5.8",
     "graphql-tag": "2.10.1",
     "prettier": "1.18.2",
-    "react": "16.8.6",
-    "react-apollo": "2.5.8",
+    "react": "16.10.2",
+    "react-apollo": "3.1.3",
     "react-bootstrap": "1.0.0-beta.9",
-    "react-dom": "16.8.6",
-    "react-router-dom": "5.0.1",
-    "react-scripts": "3.0.1",
-    "serve": "11.1.0"
+    "react-dom": "16.10.2",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.2.0",
+    "bootstrap": "4.3.1",
+    "serve": "11.2.0"
   },
+  "author": "Bindstone",
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -26,9 +28,9 @@
     "ncu:upgrade": "ncu --packageFile package.json -u"
   },
   "devDependencies": {
-    "husky": "3.0.2",
-    "lint-staged": "9.2.1",
-    "npm-check-updates": "3.1.20"
+    "husky": "3.0.9",
+    "lint-staged": "9.4.2",
+    "npm-check-updates": "3.1.24"
   },
   "husky": {
     "hooks": {
