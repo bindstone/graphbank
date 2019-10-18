@@ -1,12 +1,10 @@
-import React from 'react';
+import React from "react";
 import CurrencyList from "./currency-list";
 
-function Currency() {
-    return (
-        <div>
-            <CurrencyList/>
-        </div>
-    );
-}
+const Currency = () => (
+  <div>
+    <CurrencyList />
+  </div>
+);
 
 export default Currency;

@@ -1,11 +1,5 @@
-import React from 'react';
+import React from "react";
 
-function AppInfo() {
-    return (
-        <div>
-            Info
-        </div>
-    );
-}
+const AppInfo = () => <div>Info</div>;
 
 export default AppInfo;
