@@ -1,0 +1,18 @@
+{
+  "name": "nodejs-keycloak-example",
+  "version": "0.1.0",
+  "description": "Example page that demonstrates available keycloak functionality",
+  "main": "index.js",
+  "homepage": "https://github.com/keycloak/keycloak-nodejs-connect",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Roman Jurkov <winfinit@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "hogan-express": "*",
+    "express": "*",
+    "express-session": "*",
+    "keycloak-connect": "*"
+  }
+}

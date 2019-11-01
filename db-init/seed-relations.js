@@ -1,4 +1,4 @@
-export default `
+module.exports = `
 
 mutation {
     rel1: AddClientCurrency(from: { id: "CLI_1" }, to: {id: "CUR_1"}){from{id}}

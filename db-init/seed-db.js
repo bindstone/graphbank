@@ -1,12 +1,12 @@
-import ApolloClient from "apollo-client";
-import gql from "graphql-tag";
-import dotenv from "dotenv";
-import seednodes from "./seed-nodes";
-import seedrelations from "./seed-relations";
-import fetch from "node-fetch";
-import {HttpLink} from "apollo-link-http";
-import {InMemoryCache} from "apollo-cache-inmemory";
-import {v1 as neo4j} from "neo4j-driver";
+const {ApolloClient} = require('apollo-client');
+const gql = require('graphql-tag');
+const dotenv = require('dotenv');
+const seednodes = require('./seed-nodes');
+const seedrelations = require('./seed-relations');
+const fetch = require('node-fetch');
+const {HttpLink} = require('apollo-link-http');
+const {InMemoryCache} = require('apollo-cache-inmemory');
+const {v1: neo4j} = require('neo4j-driver');
 
 dotenv.config();
 

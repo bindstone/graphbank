@@ -1,22 +1,27 @@
-import {typeDefs} from "./graphql-schema";
-import {ApolloServer} from "apollo-server";
-import {v1 as neo4j} from "neo4j-driver";
-import {makeAugmentedSchema} from "neo4j-graphql-js";
-import dotenv from "dotenv";
+const {express: voyagerMiddleware} = require('graphql-voyager/middleware');
+const {GraphQLServer} = require('graphql-yoga');
+const {v1: neo4j} = require("neo4j-driver");
+const {makeAugmentedSchema} = require("neo4j-graphql-js");
+const dotenv = require("dotenv");
+const path = require("path");
+const fs = require('fs');
 
-// set environment variables from ../.env
+// ENVIRONMENT
 dotenv.config();
 
+// GRAPHQL Definition
+const typeDefs = fs
+    .readFileSync(
+        process.env.GRAPHQL_SCHEMA || path.join(__dirname, "schema.graphql")
+    )
+    .toString("utf-8");
 
 const schema = makeAugmentedSchema({
     typeDefs
+    // resolvers,
 });
 
-/*
- * Create a Neo4j driver instance to connect to the database
- * using credentials specified as environment variables
- * with fallback to defaults
- */
+// NEO Driver
 const driver = neo4j.driver(
     process.env.NEO4J_URI || "bolt://localhost:7687",
     neo4j.auth.basic(
@@ -25,17 +30,18 @@ const driver = neo4j.driver(
     )
 );
 
-/*
- * Create a new ApolloServer instance, serving the GraphQL schema
- * created using makeAugmentedSchema above and injecting the Neo4j driver
- * instance into the context object so it is available in the
- * generated resolvers to connect to the database.
- */
-const server = new ApolloServer({
-    context: {driver},
-    schema: schema
-});
-
-server.listen(process.env.GRAPHQL_LISTEN_PORT, "0.0.0.0").then(({url}) => {
-    console.log(`GraphQL API ready at ${url}`);
+// SERVER
+const options = {
+    port: 4000,
+    endpoint: '/graphql',
+    subscriptions: '/subscriptions',
+    playground: '/playground',
+};
+const server = new GraphQLServer({typeDefs, schema, context: {driver}});
+server.use('/voyager', voyagerMiddleware({endpointUrl: '/graphql'}));
+server.start(options, () => {
+    console.log('Server is running on http://localhost:' + options.port);
+    console.log('Server is running on http://localhost:' + options.port + '/graphql');
+    console.log('Server is running on http://localhost:' + options.port + '/playground');
+    console.log('Server is running on http://localhost:' + options.port + '/voyager');
 });

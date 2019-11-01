@@ -1,4 +1,4 @@
-export default `
+module.exports = `
 mutation {
   CCY1 : CreateCurrency(id: "CUR_1" iso: "EUR" description: "Euro" exchange: 1) {id}
   CCY2 : CreateCurrency(id: "CUR_2" iso: "USD" description: "US Dollar" exchange: 0.8) {id}
