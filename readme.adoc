@@ -1,1 +1,7 @@
-Based on: https://github.com/keycloak/keycloak-nodejs-connect
+A little POC on a GraphQL implementation.
+
+Based on:
+
+* https://github.com/grand-stack/grand-stack-starter
+
+* https://github.com/prisma-labs/graphql-yoga
