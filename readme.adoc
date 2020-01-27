@@ -5,3 +5,20 @@ Based on:
 * https://github.com/grand-stack/grand-stack-starter
 
 * https://github.com/prisma-labs/graphql-yoga
+
+Links:
+
+https://www.youtube.com/watch?v=w4LBCBDQiVc
+
+https://www.youtube.com/watch?v=Vil2HG-Z1ZA
+
+https://www.youtube.com/watch?v=Q3GMN2Z483Y
+
+Articles:
+
+https://graphqlmastery.com/blog/input-object-type-as-an-argument-for-graphql-mutations-and-queries
+
+https://www.howtographql.com/
+
+
+
